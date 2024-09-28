@@ -35,7 +35,7 @@ class SpringboardPhotoViewController: UIViewController {
     // MARK: UI setup
     
     func collectionViewSetup() {
-        collectionView.register(UINib(nibName: "AsyncImageCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "AsyncImageCollectionViewCell")
+        collectionView.register(UINib(nibName: "AsyncImageCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: AsyncImageCollectionViewCell.identifier)
         
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical

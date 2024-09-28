@@ -37,6 +37,10 @@ class AsyncImageCollectionViewCell: UICollectionViewCell {
             activityIndicator.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
             activityIndicator.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
         ])
+        
+        imageView.contentMode = .scaleAspectFill
+        imageView.layer.masksToBounds = true
+        imageView.layer.cornerRadius = 7
     }
     
     func configure(viewModel: CellViewModel) {
