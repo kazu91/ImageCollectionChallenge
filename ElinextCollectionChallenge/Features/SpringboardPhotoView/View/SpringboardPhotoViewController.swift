@@ -74,7 +74,9 @@ class SpringboardPhotoViewController: UIViewController {
     
     @objc func addNewImage() {
         viewModels.append(.init())
-        collectionView.reloadData()
+        
+        let newIndexPath = IndexPath(item: viewModels.count - 1, section: 0)
+        collectionView.insertItems(at: [newIndexPath])
     }
     
     @objc func reloadAllImages() {
