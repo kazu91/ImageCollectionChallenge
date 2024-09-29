@@ -5,10 +5,9 @@ This application is designed to display a collection of images fetched from a re
 
 ## Features
 - Displays a grid of images in a 7x10 layout with a 2pt spacing between images.
-- Supports horizontal pagination.
 - Includes buttons for adding a new image and reloading all images.
 - Implements image caching to optimize performance.
-- Displays a loading spinner while images are being fetched.
+- Displays a loading indicator while images are being fetched.
 
 
 ## Usage
