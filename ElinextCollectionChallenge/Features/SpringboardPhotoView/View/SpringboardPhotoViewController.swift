@@ -18,7 +18,7 @@ class SpringboardPhotoViewController: UIViewController {
     var viewModels: [CellViewModel] = []
     
     // MARK: - Life Cycle
-   
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,16 +38,16 @@ class SpringboardPhotoViewController: UIViewController {
         collectionView.register(UINib(nibName: "AsyncImageCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: AsyncImageCollectionViewCell.identifier)
         
         let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .vertical
-        layout.minimumInteritemSpacing = 2
+        layout.scrollDirection = .horizontal
+        layout.minimumInteritemSpacing = 0
         layout.minimumLineSpacing = 2
-        let itemWidth = (view.frame.width / 7) - 2
-        let itemHeight = (view.frame.height / 10) - 2
+        let itemWidth = (collectionView.frame.width / 7) - 2
+        let itemHeight = (collectionView.frame.height / 10)
         layout.itemSize = CGSize(width: itemWidth, height: itemHeight)
         
-        
-        // Setup Collection View
-        collectionView.collectionViewLayout = layout
+        collectionView.collectionViewLayout = PagedCollectionViewLayout()
+//        collectionView.contentInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+        collectionView.isPagingEnabled = true
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.prefetchDataSource = self
@@ -67,9 +67,9 @@ class SpringboardPhotoViewController: UIViewController {
         let barButton2 = UIBarButtonItem(customView: reloadButton)
         
         navigationItem.rightBarButtonItems = [barButton1, barButton2]
-
+        
     }
-
+    
     //MARK: Functions
     
     @objc func addNewImage() {
@@ -99,7 +99,7 @@ extension SpringboardPhotoViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AsyncImageCollectionViewCell.identifier, for: indexPath) as! AsyncImageCollectionViewCell
-            
+        
         cell.setupViews()
         
         cell.configure(viewModel: viewModels[indexPath.row])
